@@ -11,6 +11,9 @@ use progress;
 use time;
 
 pub fn perform_backup(raze: &mut engine::Raze ,persistent_data: &mut storage_helper::PersistentData) {
+    println!("Preparing to perform backup");
+    println!("Constructing list of files to upload");
+    std::io::stdout().flush().unwrap();
     // Verify that a bucket is selected
     if persistent_data.active_bucket == "" {
         println!("Please set a bucket first with the 'set_bucket' command");
