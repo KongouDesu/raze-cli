@@ -11,9 +11,6 @@ use progress;
 use time;
 
 pub fn perform_backup(raze: &mut engine::Raze ,persistent_data: &mut storage_helper::PersistentData) {
-    println!("Preparing to perform backup");
-    println!("Constructing list of files to upload");
-    std::io::stdout().flush().unwrap();
     // Verify that a bucket is selected
     if persistent_data.active_bucket == "" {
         println!("Please set a bucket first with the 'set_bucket' command");
@@ -22,10 +19,14 @@ pub fn perform_backup(raze: &mut engine::Raze ,persistent_data: &mut storage_hel
     // Set the active bucket
     raze.set_active_bucket(persistent_data.active_bucket.clone());
 
+    println!("Backup start");
+
     // Notify the user that they are throttling the upload
     if persistent_data.bandwidth_limit > 0 {
         println!("! INFO ! Uploading is being throttled to {}/sec", format_bytes(persistent_data.bandwidth_limit as u64));
     }
+
+    println!("Constructing file list");
 
     // Get a list of files for uploading
     let file_list = storage_helper::create_file_list(

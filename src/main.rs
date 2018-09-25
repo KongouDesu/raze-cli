@@ -28,7 +28,9 @@ const CREDENTIALS_FILE_NAME: &str = &"raze_credentials";
 // After this many bytes, switch to upload_file_streaming to reduce memory usage
 const STREAM_UPLOAD_THRESHOLD: u64 = 5*1000*1000;
 // The amount of simultaneous uploads
-const UPLOAD_THREADS: usize = 4;
+const UPLOAD_THREADS: usize = 4; // TODO Base this on CPU count?
+// The amount of simultaneous delete request senders
+const DELETE_THREADS: usize = 16; // Shouldn't be based on CPU count
 
 fn main() {
     println!("Raze CLI - {}", env!("CARGO_PKG_VERSION"));

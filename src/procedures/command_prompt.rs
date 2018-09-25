@@ -10,13 +10,17 @@ pub fn command_prompt(raze: &mut Raze, persistent_data: &mut PersistentData){
     match input.to_lowercase().trim_right() {
         "help" => {
             println!("Command List");
-            println!("'quit' - Exits this program");
-            println!("'backup' - Starts a new backup");
-            println!("'throttle' - Allows you to set the maximum bytes sent per second");
-            println!("'set_bucket' - Lists available buckets and asks which one to use for backups");
-            println!("'usage' - Explains how to use this program")
+            // Aligning like a pro coder
+            println!("'quit' \t\t\t- Exits this program");
+            println!("'backup' \t\t- Starts a new backup");
+            println!("'throttle' \t\t- Allows you to set the maximum bytes sent per second");
+            println!("'set_bucket' \t- Lists available buckets and asks which one to use for backups");
+            println!("'purge' \t\t- Delete files in bucket no longer found on the system");
+            println!("'usage' \t\t- Explains how to use this program")
         }
         "quit" => std::process::exit(0),
+        "exit" => std::process::exit(0),
+        "goodbye" => std::process::exit(0),
         "backup" => {
             ::procedures::backup::perform_backup(raze, persistent_data);
         }
@@ -55,7 +59,10 @@ pub fn command_prompt(raze: &mut Raze, persistent_data: &mut PersistentData){
                     persistent_data.save_to_file(&std::path::Path::new(::PERSISTENT_DATA_FILE_NAME));
                 }
             }
-        }
+        },
+        "purge" => {
+            ::procedures::purge::purge_files(raze, persistent_data);
+        },
         "usage" => {
             println!("Raze User Guide");
             println!("Before you can run a backup, you must use the 'set_bucket' command");

@@ -1,10 +1,10 @@
 [package]
 name = "raze-cli"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Kongou <kongou@shipfu.moe>"]
 
 [dependencies]
-raze = "0.1.8"
+raze = "0.1.11"
 text_io = "*"
 time = "0.1.39"
 

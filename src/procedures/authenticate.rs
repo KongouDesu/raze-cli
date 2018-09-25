@@ -9,7 +9,7 @@ use raze;
 /// This will attempt to read from a file. If the file is not found, it will prompt for this information.
 /// If the user supplies this information and the authentication succeeds, the auth information will be stored
 pub fn auth(raze: &mut Raze){
-    match raze.authenticate_from_file(std::path::Path::new(::CREDENTIALS_FILE_NAME)) {
+    match raze.new_from_auth_file(std::path::Path::new(::CREDENTIALS_FILE_NAME)) {
         Some(e) => {
             println!("Failed to authenticate with credentials file");
             match e {
