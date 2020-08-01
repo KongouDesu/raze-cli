@@ -1,3 +1,6 @@
+# Deprecated
+This repository houses an **old** proof of concept for the [raze][1] library. Since `raze` has undergone a rewrite, this code is no longer relevant, albeit still functioning.
+
 # raze-cli
 
 An example project using the [Raze][1] library to make a simple CLI backup tool.
